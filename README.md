@@ -1,6 +1,7 @@
 # Distributed File System (DFS)
 ## System Overview
 A DFS is a file storage system that allows users to store, retrieve, and manage files across multiple machines while providing redundancy, fault tolerance, and scalability.
+![SystemOverview](documentation/DFS.jpg)
 
 ## Functional Requirements
 ### File Storage & Retrieval
