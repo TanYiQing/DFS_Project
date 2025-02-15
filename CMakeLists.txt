@@ -9,22 +9,44 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("DFS_Project")
-
+cmake_policy(SET CMP0091 NEW) # Enable MSVC runtime selection
+set(CMAKE_CSharp_COMPILER "C:/Program Files/dotnet/dotnet.exe")
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 20)
+
+project ("DFS_Project")
+enable_language(CXX)
+enable_language(CSharp)
 
 # Add subdirectories for each component
 add_subdirectory(src/backend/function1)
 add_subdirectory(src/backend/function2)
 
-# Define the executable that uses component1 and component2
-add_executable(DFS_Project src/DFS_Project.cpp)
+# Define C# frontend directory
+set(FRONTEND_DIR ${CMAKE_SOURCE_DIR}/src/frontend)
 
-# TODO: Add tests and install targets if needed.
+# Create a CMake target to build the C# WPF project
+add_custom_target(frontend
+    COMMAND dotnet build ${FRONTEND_DIR} --configuration Debug
+    WORKING_DIRECTORY ${FRONTEND_DIR}
+    COMMENT "Building WPF frontend..."
+)
 
-target_link_libraries(DFS_Project PRIVATE function1 function2)  # Link to the DLLs
-target_include_directories(DFS_Project PRIVATE 
-    ${CMAKE_SOURCE_DIR}/src/function1
-    ${CMAKE_SOURCE_DIR}/src/function2
-)  # Include the header directories
+# Ensure backend DLLs are copied to the frontend output directory
+add_custom_command(TARGET frontend POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_BINARY_DIR}/bin/function1.dll
+        ${FRONTEND_DIR}/bin/Debug/net8.0-windows/
+    COMMENT "Copying function1.dll to frontend output..."
+)
+
+# Ensure backend DLLs are copied to the frontend output directory
+add_custom_command(TARGET frontend POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_BINARY_DIR}/bin/function1.dll
+        ${FRONTEND_DIR}/bin/Debug/net8.0-windows/
+    COMMENT "Copying function1.dll to frontend output..."
+)
+
+# Ensure the frontend is built when running `cmake --build`
+add_dependencies(frontend function1 function2)
