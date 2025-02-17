@@ -14,18 +14,5 @@ namespace frontend
       {
          InitializeComponent();
       }
-
-      private void OnButtonClick(object sender, RoutedEventArgs e)
-      {
-         try
-         {
-            function_from_function1();
-            OutputText.Text = "Called function1 successfully!";
-         }
-         catch (Exception ex)
-         {
-            OutputText.Text = $"Error: {ex.Message}";
-         }
-      }
    }
 }
