@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 
-namespace frontend
+namespace DFS
 {
    public partial class MainWindow : Window
    {
@@ -13,6 +13,7 @@ namespace frontend
       public MainWindow()
       {
          InitializeComponent();
+         MainFrame.Navigate(new ServerPage());
       }
    }
 }
