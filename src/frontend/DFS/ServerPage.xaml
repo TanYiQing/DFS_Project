@@ -1,0 +1,98 @@
+﻿<Page x:Class="DFS.ServerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:local="clr-namespace:DFS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ServerPage">
+
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="10*"></RowDefinition>
+         <RowDefinition Height="45*"/>
+         <RowDefinition Height="45*"></RowDefinition>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0" VerticalAlignment="Top">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+         </Grid.ColumnDefinitions>
+
+         <Grid Grid.Column="0"></Grid>
+         <Grid Grid.Column="1">
+            <Grid>
+               <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"></ColumnDefinition>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+               </Grid.ColumnDefinitions>
+
+               <TextBox Grid.Column="0" VerticalAlignment="Center" Margin="0,0,5,0" TextWrapping="NoWrap" Padding="5"></TextBox>
+               <fa:FontAwesome Grid.Column="1" Icon="Search" VerticalAlignment="Center"></fa:FontAwesome>
+            </Grid>
+         </Grid>
+         <Grid Grid.Column="2"></Grid>
+      </Grid>
+
+      <Grid Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="90*"></RowDefinition>
+         </Grid.RowDefinitions>
+
+         <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+               <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">Metadata Server</TextBlock>
+               <Button BorderThickness="0" Margin="10,0">
+                  <StackPanel Orientation="Horizontal">
+                     <TextBlock Margin="10,0,0,0">Add</TextBlock>
+                     <fa:FontAwesome Icon="Plus" VerticalAlignment="Center" Margin="10,0,10,0"></fa:FontAwesome>
+                  </StackPanel>
+               </Button>
+               <Button BorderThickness="0" Margin="10,0">
+                  <StackPanel Orientation="Horizontal">
+                     <TextBlock Margin="10,0,0,0">Delete</TextBlock>
+                     <fa:FontAwesome Icon="Plus" VerticalAlignment="Center" Margin="10,0,10,0"></fa:FontAwesome>
+                  </StackPanel>
+               </Button>
+            </StackPanel>
+            
+         </Grid>
+         <Grid Grid.Row="1">
+            <Rectangle Margin="10" Fill="Beige" VerticalAlignment="Stretch"></Rectangle>
+         </Grid>
+      </Grid>
+
+      <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+         <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="90*"></RowDefinition>
+         </Grid.RowDefinitions>
+
+         <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+               <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">Data Storage Server</TextBlock>
+               <Button BorderThickness="0" Margin="10,0">
+                  <StackPanel Orientation="Horizontal">
+                     <TextBlock Margin="10,0,0,0">Add</TextBlock>
+                     <fa:FontAwesome Icon="Plus" VerticalAlignment="Center" Margin="10,0,10,0"></fa:FontAwesome>
+                  </StackPanel>
+               </Button>
+               <Button BorderThickness="0" Margin="10,0">
+                  <StackPanel Orientation="Horizontal">
+                     <TextBlock Margin="10,0,0,0">Delete</TextBlock>
+                     <fa:FontAwesome Icon="Plus" VerticalAlignment="Center" Margin="10,0,10,0"></fa:FontAwesome>
+                  </StackPanel>
+               </Button>
+            </StackPanel>
+         </Grid>
+         <Grid Grid.Row="1">
+            <Rectangle Margin="10" Fill="Beige" VerticalAlignment="Stretch"></Rectangle>
+         </Grid>
+      </Grid>
+   </Grid>
+</Page>
